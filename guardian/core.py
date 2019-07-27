@@ -15,6 +15,10 @@ def _get_pks_model_and_ctype(objects):
     Returns the primary keys, model and content type of an iterable of Django model objects.
     Assumes that all objects are of the same content type.
     """
+    # Initialise variables to avoid potential UnboundLocalError exceptions
+    pks = None
+    model = None
+    ctype = None
 
     if isinstance(objects, QuerySet):
         model = objects.model
